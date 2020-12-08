@@ -10,7 +10,6 @@ import java.io.Serializable;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(exclude={"name", "email", "fone", "password"})
 @ToString
 public class User implements Serializable {
@@ -22,4 +21,11 @@ public class User implements Serializable {
     @Getter @Setter private String fone;
     @Getter @Setter private String password;
 
+    public User(Long id, String name, String email, String fone, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.fone = fone;
+        this.password = password;
+    }
 }
