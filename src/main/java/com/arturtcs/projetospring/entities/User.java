@@ -1,26 +1,25 @@
 package com.arturtcs.projetospring.entities;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
-@Getter @Setter @NoArgsConstructor @EqualsAndHashCode
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(exclude={"name", "email", "fone", "password"})
+@ToString
 public class User implements Serializable {
 
-    private Long id;
-    private String name;
-    private String email;
-    private String fone;
-    private String password;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter private Long id;
+    @Getter @Setter private String name;
+    @Getter @Setter private String email;
+    @Getter @Setter private String fone;
+    @Getter @Setter private String password;
 
-    public User(Long id, String name, String email, String fone, String password) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.fone = fone;
-        this.password = password;
-    }
 }
